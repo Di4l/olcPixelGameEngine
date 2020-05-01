@@ -163,6 +163,7 @@ namespace olc
 		bool SavePack(const std::string& sFile, const std::string& sKey);
 		ResourceBuffer GetFileBuffer(const std::string& sFile);
 		bool Loaded();
+
 	private:
 		struct sResourceFile { uint32_t nSize; uint32_t nOffset; };
 		std::map<std::string, sResourceFile> mapFiles;
