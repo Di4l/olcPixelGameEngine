@@ -17,6 +17,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basicExample", "examples\ba
 		{098A6116-1A04-455D-9609-EA07289F6F8B} = {098A6116-1A04-455D-9609-EA07289F6F8B}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extensions", "extensions", "{31D5338E-1016-47FC-A5AA-C05A425D15F6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pgexPopupMenu", "extensions\popUpMenu\pgexPopupMenu.vcxproj", "{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,12 +45,21 @@ Global
 		{94A0EB9E-4B23-49B5-99B7-FFDCD5AFE5C3}.Release|x64.Build.0 = Release|x64
 		{94A0EB9E-4B23-49B5-99B7-FFDCD5AFE5C3}.Release|x86.ActiveCfg = Release|Win32
 		{94A0EB9E-4B23-49B5-99B7-FFDCD5AFE5C3}.Release|x86.Build.0 = Release|Win32
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Debug|x64.ActiveCfg = Debug|x64
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Debug|x64.Build.0 = Debug|x64
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Debug|x86.ActiveCfg = Debug|Win32
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Debug|x86.Build.0 = Debug|Win32
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Release|x64.ActiveCfg = Release|x64
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Release|x64.Build.0 = Release|x64
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Release|x86.ActiveCfg = Release|Win32
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{94A0EB9E-4B23-49B5-99B7-FFDCD5AFE5C3} = {BE225716-8ADD-4003-8AD7-659957ED807C}
+		{E4BAA147-F99E-498E-9B03-FF7C54E5E8C7} = {31D5338E-1016-47FC-A5AA-C05A425D15F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3284B160-E158-499D-B1F3-0D8A692EAB88}
