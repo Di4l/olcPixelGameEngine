@@ -13,7 +13,7 @@ namespace olc
 		Sprite();
 		Sprite(const std::string& sImageFile, olc::ResourcePack* pack = nullptr);
 		Sprite(int32_t w, int32_t h);
-		~Sprite();
+		virtual ~Sprite();
 
 	public:
 		olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr);
