@@ -22,6 +22,22 @@ CVSprite::CVSprite(const std::string& sImageFile, olc::ResourcePack* pack)
 }
 //-----------------------------------------------------------------------------
 
+CVSprite::CVSprite(const std::string& sImageFile, int32_t w, int32_t h)
+{
+    loadImage(sImageFile);
+    resize(w, h);
+    updateSprite();
+}
+//-----------------------------------------------------------------------------
+
+CVSprite::CVSprite(const std::string& sImageFile, float scale)
+{
+    loadImage(sImageFile);
+    scaleImage(scale);
+    updateSprite();
+}
+//-----------------------------------------------------------------------------
+
 CVSprite::CVSprite(cv::Mat& image) : Sprite(), m_image(image)
 {
     updateSprite();
@@ -86,6 +102,25 @@ bool CVSprite::loadImage(const std::string& sImageFile)
     return true;
 }
 //-----------------------------------------------------------------------------
+
+void CVSprite::scaleImage(float scale)
+{
+    if (scale != 1.0)
+    {
+        cv::resize(m_image, m_image, cv::Size(), scale, scale);
+    }
+}
+//-----------------------------------------------------------------------------
+
+void CVSprite::resize(int32_t w, int32_t h)
+{
+    if (w != m_image.cols || h != m_image.rows)
+    {
+        cv::resize(m_image, m_image, cv::Size(w, h));
+    }
+}
+//-----------------------------------------------------------------------------
+
 
 
 Sprite* pgexOpenCV::toSprite(cv::Mat& image)

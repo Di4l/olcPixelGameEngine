@@ -12,7 +12,6 @@ public:
 	olcOpenCv();
 	virtual ~olcOpenCv();
 
-	olc::Sprite*   sprite   = nullptr;
 	olc::CVSprite* cvSprite = nullptr;
 
 public:
