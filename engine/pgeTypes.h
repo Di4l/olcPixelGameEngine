@@ -1,9 +1,12 @@
+//-----------------------------------------------------------------------------
 #pragma once
-
+//-----------------------------------------------------------------------------
 #include "pgeDefs.h"
+//-----------------------------------------------------------------------------
 
 namespace olc
 {
+	//-------------------------------------------------------------------------
 	class PixelGameEngine;
 
 	// Pixel Game Engine Advanced Configuration
@@ -12,11 +15,9 @@ namespace olc
 	constexpr uint32_t nDefaultPixel = (nDefaultAlpha << 24);
 	enum rcode { FAIL = 0, OK = 1, NO_FILE = -1 };
 
-
-
-	// O------------------------------------------------------------------------------O
-	// | olc::Pixel - Represents a 32-Bit RGBA colour                                 |
-	// O------------------------------------------------------------------------------O
+	// O----------------------------------------------------------------------O
+	// | olc::Pixel - Represents a 32-Bit RGBA colour                         |
+	// O----------------------------------------------------------------------O
 	struct Pixel
 	{
 		union
@@ -33,14 +34,14 @@ namespace olc
 		bool operator==(const Pixel& p) const;
 		bool operator!=(const Pixel& p) const;
 	};
+	//-------------------------------------------------------------------------
 
 	Pixel PixelF(float red, float green, float blue, float alpha = 1.0f);
 
 
-
-	// O------------------------------------------------------------------------------O
-	// | USEFUL CONSTANTS                                                             |
-	// O------------------------------------------------------------------------------O
+	// O----------------------------------------------------------------------O
+	// | USEFUL CONSTANTS                                                     |
+	// O----------------------------------------------------------------------O
 	static const Pixel
 		GREY(192, 192, 192), DARK_GREY(128, 128, 128), VERY_DARK_GREY(64, 64, 64),
 		RED(255, 0, 0), DARK_RED(128, 0, 0), VERY_DARK_RED(64, 0, 0),
@@ -50,6 +51,7 @@ namespace olc
 		BLUE(0, 0, 255), DARK_BLUE(0, 0, 128), VERY_DARK_BLUE(0, 0, 64),
 		MAGENTA(255, 0, 255), DARK_MAGENTA(128, 0, 128), VERY_DARK_MAGENTA(64, 0, 64),
 		WHITE(255, 255, 255), BLACK(0, 0, 0), BLANK(0, 0, 0, 0);
+	//-------------------------------------------------------------------------
 
 	enum Key
 	{
@@ -64,9 +66,9 @@ namespace olc
 		NP_MUL, NP_DIV, NP_ADD, NP_SUB, NP_DECIMAL, PERIOD
 	};
 
-	// O------------------------------------------------------------------------------O
-	// | olc::vX2d - A generic 2D vector type                                         |
-	// O------------------------------------------------------------------------------O
+	// O----------------------------------------------------------------------O
+	// | olc::vX2d - A generic 2D vector type                                 |
+	// O----------------------------------------------------------------------O
 #if !defined(OLC_IGNORE_VEC2D)
 	template <class T>
 	struct v2d_generic
@@ -96,6 +98,7 @@ namespace olc
 		inline operator v2d_generic<float>() const { return { static_cast<float>(this->x), static_cast<float>(this->y) }; }
 		inline operator v2d_generic<double>() const { return { static_cast<double>(this->x), static_cast<double>(this->y) }; }
 	};
+	//-------------------------------------------------------------------------
 
 	// Note: joshinils has some good suggestions here, but they are complicated to implement at this moment, 
 	// however they will appear in a future version of PGE
@@ -103,33 +106,44 @@ namespace olc
 	{
 		return v2d_generic<T>((T)(lhs * (float)rhs.x), (T)(lhs * (float)rhs.y));
 	}
+	//-------------------------------------------------------------------------
+
 	template<class T> inline v2d_generic<T> operator * (const double& lhs, const v2d_generic<T>& rhs)
 	{
 		return v2d_generic<T>((T)(lhs * (double)rhs.x), (T)(lhs * (double)rhs.y));
 	}
+	//-------------------------------------------------------------------------
+
 	template<class T> inline v2d_generic<T> operator * (const int& lhs, const v2d_generic<T>& rhs)
 	{
 		return v2d_generic<T>((T)(lhs * (int)rhs.x), (T)(lhs * (int)rhs.y));
 	}
+	//-------------------------------------------------------------------------
+
 	template<class T> inline v2d_generic<T> operator / (const float& lhs, const v2d_generic<T>& rhs)
 	{
 		return v2d_generic<T>((T)(lhs / (float)rhs.x), (T)(lhs / (float)rhs.y));
 	}
+	//-------------------------------------------------------------------------
+
 	template<class T> inline v2d_generic<T> operator / (const double& lhs, const v2d_generic<T>& rhs)
 	{
 		return v2d_generic<T>((T)(lhs / (double)rhs.x), (T)(lhs / (double)rhs.y));
 	}
+	//-------------------------------------------------------------------------
+
 	template<class T> inline v2d_generic<T> operator / (const int& lhs, const v2d_generic<T>& rhs)
 	{
 		return v2d_generic<T>((T)(lhs / (int)rhs.x), (T)(lhs / (int)rhs.y));
 	}
+	//-------------------------------------------------------------------------
 
 	typedef v2d_generic<int32_t> vi2d;
 	typedef v2d_generic<uint32_t> vu2d;
 	typedef v2d_generic<float> vf2d;
 	typedef v2d_generic<double> vd2d;
+	//-------------------------------------------------------------------------
 #endif
-
 
 
 	// O------------------------------------------------------------------------------O
@@ -143,7 +157,6 @@ namespace olc
 	};
 
 
-
 	// O------------------------------------------------------------------------------O
 	// | olc::ResourcePack - A virtual scrambled filesystem to pack your assets into  |
 	// O------------------------------------------------------------------------------O
@@ -152,6 +165,7 @@ namespace olc
 		ResourceBuffer(std::ifstream& ifs, uint32_t offset, uint32_t size);
 		std::vector<char> vMemory;
 	};
+	//-------------------------------------------------------------------------
 
 	class ResourcePack : public std::streambuf
 	{
@@ -171,4 +185,41 @@ namespace olc
 		std::vector<char> scramble(const std::vector<char>& data, const std::string& key);
 		std::string makeposix(const std::string& path);
 	};
+
+
+	// O----------------------------------------------------------------------O
+	// | olc::ISprite - An interface for an image                             |
+	// O----------------------------------------------------------------------O
+	class ISprite
+	{
+	private:
+	protected:
+	public:
+		ISprite() {}
+		ISprite(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) {}
+		ISprite(int32_t w, int32_t h) {}
+		virtual ~ISprite() {};
+
+		enum Mode { NORMAL, PERIODIC };
+		enum Flip { NONE = 0, HORIZ = 1, VERT = 2 };
+
+		int32_t width      = 0;
+		int32_t height     = 0;
+		Mode    modeSample = Mode::NORMAL;
+
+		virtual olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) = 0;
+		virtual olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) = 0;
+		virtual olc::rcode SaveToPGESprFile(const std::string& sImageFile) = 0;
+
+		virtual void   SetSampleMode(ISprite::Mode mode = ISprite::Mode::NORMAL) = 0;
+		virtual Pixel  GetPixel(int32_t x, int32_t y) = 0;
+		virtual bool   SetPixel(int32_t x, int32_t y, Pixel p) = 0;
+		virtual Pixel  GetPixel(const olc::vi2d& a) = 0;
+		virtual bool   SetPixel(const olc::vi2d& a, Pixel p) = 0;
+		virtual Pixel  Sample(float x, float y) = 0;
+		virtual Pixel  SampleBL(float u, float v) = 0;
+		virtual Pixel* GetData() = 0;
+	};
+	//-------------------------------------------------------------------------
 }	//-- namespace olc
+//-----------------------------------------------------------------------------

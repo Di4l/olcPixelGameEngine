@@ -149,7 +149,13 @@
     <ClInclude Include="pgeTypes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="internals\PlatformLinux.cpp" />
+    <ClCompile Include="internals\PlatformWindows.cpp" />
+    <ClCompile Include="internals\RndrOGL10.cpp" />
     <ClCompile Include="olcPixelGameEngine.cpp" />
+    <ClCompile Include="pgeDecal.cpp" />
+    <ClCompile Include="pgeResources.cpp" />
+    <ClCompile Include="pgeSprite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

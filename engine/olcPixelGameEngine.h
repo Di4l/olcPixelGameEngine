@@ -194,9 +194,9 @@ int main()
 // O------------------------------------------------------------------------------O
 namespace olc
 {
-	static std::unique_ptr<Renderer> renderer;
-	static std::unique_ptr<Platform> platform;
-	static std::map<size_t, uint8_t> mapKeys;
+	//static std::unique_ptr<Renderer> renderer;
+	//static std::unique_ptr<Platform> platform;
+	//static std::map<size_t, uint8_t> mapKeys;
 
 	// O------------------------------------------------------------------------------O
 	// | olc::PixelGameEngine - The main BASE class for your application              |
@@ -242,12 +242,12 @@ namespace olc
 		// Returns the height of the currently selected drawing target in "pixels"
 		int32_t GetDrawTargetHeight();
 		// Returns the currently active draw target
-		olc::Sprite* GetDrawTarget();
+		olc::ISprite* GetDrawTarget();
 		// Resize the primary screen sprite
 		void SetScreenSize(int w, int h);
 		// Specify which Sprite should be the target of drawing functions, use nullptr
 		// to specify the primary screen
-		void SetDrawTarget(Sprite *target);
+		void SetDrawTarget(ISprite *target);
 		// Gets the current Frames Per Second
 		uint32_t GetFPS();
 
@@ -306,12 +306,12 @@ namespace olc
 		void FillTriangle(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3, Pixel p = olc::WHITE);
 		void FillTriangle(const olc::vi2d& pos1, const olc::vi2d& pos2, const olc::vi2d& pos3, Pixel p = olc::WHITE);
 		// Draws an entire sprite at well in my defencelocation (x,y)
-		void DrawSprite(int32_t x, int32_t y, Sprite *sprite, uint32_t scale = 1, uint8_t flip = olc::Sprite::NONE);
-		void DrawSprite(const olc::vi2d& pos, Sprite *sprite, uint32_t scale = 1, uint8_t flip = olc::Sprite::NONE);
+		void DrawSprite(int32_t x, int32_t y, ISprite *sprite, uint32_t scale = 1, uint8_t flip = olc::ISprite::NONE);
+		void DrawSprite(const olc::vi2d& pos, ISprite *sprite, uint32_t scale = 1, uint8_t flip = olc::ISprite::NONE);
 		// Draws an area of a sprite at location (x,y), where the
 		// selected area is (ox,oy) to (ox+w,oy+h)
-		void DrawPartialSprite(int32_t x, int32_t y, Sprite *sprite, int32_t ox, int32_t oy, int32_t w, int32_t h, uint32_t scale = 1, uint8_t flip = olc::Sprite::NONE);
-		void DrawPartialSprite(const olc::vi2d& pos, Sprite *sprite, const olc::vi2d& sourcepos, const olc::vi2d& size, uint32_t scale = 1, uint8_t flip = olc::Sprite::NONE);
+		void DrawPartialSprite(int32_t x, int32_t y, ISprite *sprite, int32_t ox, int32_t oy, int32_t w, int32_t h, uint32_t scale = 1, uint8_t flip = olc::ISprite::NONE);
+		void DrawPartialSprite(const olc::vi2d& pos, ISprite *sprite, const olc::vi2d& sourcepos, const olc::vi2d& size, uint32_t scale = 1, uint8_t flip = olc::ISprite::NONE);
 		// Draws a whole decal, with optional scale and tinting
 		void DrawDecal(const olc::vf2d& pos, olc::Decal *decal, const olc::vf2d& scale = { 1.0f,1.0f }, const olc::Pixel& tint = olc::WHITE);
 		// Draws a region of a decal, with optional scale and tinting
@@ -344,7 +344,7 @@ namespace olc
 		std::string sAppName;
 
 	private: // Inner mysterious workings
-		Sprite*     pDrawTarget           = nullptr;
+		ISprite*    pDrawTarget           = nullptr;
 		Pixel::Mode	nPixelMode            = Pixel::NORMAL;
 		float		fBlendFactor          = 1.0f;
 		olc::vi2d	vScreenSize           = { 256, 240 };
@@ -364,9 +364,9 @@ namespace olc
 		bool		bEnableVSYNC          = false;
 		float		fFrameTimer           = 1.0f;
 		int			nFrameCount           = 0;
-		Sprite*     fontSprite            = nullptr;
+		ISprite*    fontSprite            = nullptr;
 		Decal*		fontDecal			  = nullptr;
-		Sprite*     pDefaultDrawTarget    = nullptr;
+		ISprite*    pDefaultDrawTarget    = nullptr;
 		std::vector<LayerDesc> vLayers;
 		uint8_t		nTargetLayer          = 0;
 		uint32_t	nLastFPS              = 0;
@@ -413,8 +413,7 @@ namespace olc
 		// in case you are using them, but they will be removed.
 		// olc::vf2d	vSubPixelOffset = { 0.0f, 0.0f };
 	};
-
-
+	//-------------------------------------------------------------------------
 
 	// O------------------------------------------------------------------------------O
 	// | PGE EXTENSION BASE CLASS - Permits access to PGE functions from extension    |
@@ -425,5 +424,6 @@ namespace olc
 	protected:
 		static PixelGameEngine* pge;
 	};
+	//-------------------------------------------------------------------------
 }
 
