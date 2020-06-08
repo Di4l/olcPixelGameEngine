@@ -194,10 +194,6 @@ int main()
 // O------------------------------------------------------------------------------O
 namespace olc
 {
-	//static std::unique_ptr<Renderer> renderer;
-	//static std::unique_ptr<Platform> platform;
-	//static std::map<size_t, uint8_t> mapKeys;
-
 	// O------------------------------------------------------------------------------O
 	// | olc::PixelGameEngine - The main BASE class for your application              |
 	// O------------------------------------------------------------------------------O

@@ -194,11 +194,13 @@ namespace olc
 	{
 	private:
 	protected:
+		Pixel* pColData = nullptr;
+
 	public:
-		ISprite() {}
+		ISprite();
 		ISprite(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) {}
-		ISprite(int32_t w, int32_t h) {}
-		virtual ~ISprite() {};
+		ISprite(int32_t w, int32_t h);
+		virtual ~ISprite();
 
 		enum Mode { NORMAL, PERIODIC };
 		enum Flip { NONE = 0, HORIZ = 1, VERT = 2 };
@@ -211,14 +213,14 @@ namespace olc
 		virtual olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) = 0;
 		virtual olc::rcode SaveToPGESprFile(const std::string& sImageFile) = 0;
 
-		virtual void   SetSampleMode(ISprite::Mode mode = ISprite::Mode::NORMAL) = 0;
-		virtual Pixel  GetPixel(int32_t x, int32_t y) = 0;
-		virtual bool   SetPixel(int32_t x, int32_t y, Pixel p) = 0;
-		virtual Pixel  GetPixel(const olc::vi2d& a) = 0;
-		virtual bool   SetPixel(const olc::vi2d& a, Pixel p) = 0;
-		virtual Pixel  Sample(float x, float y) = 0;
-		virtual Pixel  SampleBL(float u, float v) = 0;
-		virtual Pixel* GetData() = 0;
+		void   SetSampleMode(ISprite::Mode mode = ISprite::Mode::NORMAL);
+		Pixel  GetPixel(int32_t x, int32_t y);
+		bool   SetPixel(int32_t x, int32_t y, Pixel p);
+		Pixel  GetPixel(const olc::vi2d& a);
+		bool   SetPixel(const olc::vi2d& a, Pixel p);
+		Pixel  Sample(float x, float y);
+		Pixel  SampleBL(float u, float v);
+		Pixel* GetData() { return pColData; }
 	};
 	//-------------------------------------------------------------------------
 }	//-- namespace olc

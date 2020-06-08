@@ -38,7 +38,7 @@ CVSprite::CVSprite(const std::string& sImageFile, float scale)
 }
 //-----------------------------------------------------------------------------
 
-CVSprite::CVSprite(cv::Mat& image) : Sprite(), m_image(image)
+CVSprite::CVSprite(cv::Mat& image) : ISprite(), m_image(image)
 {
     updateSprite();
 }

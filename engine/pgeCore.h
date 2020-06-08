@@ -42,6 +42,7 @@ namespace olc
 		virtual void       ClearBuffer(olc::Pixel p, bool bDepth) = 0;
 
 		static olc::PixelGameEngine* ptrPGE;
+
 		static Renderer* create();
 		static Renderer* get() { return m_rend.get(); }
 	private:
@@ -66,7 +67,7 @@ namespace olc
 		static std::unique_ptr<Platform> createPlatform();
 	};
 	//-------------------------------------------------------------------------
-#define renderer	Renderer::get()
+	#define renderer	Renderer::get()			//-- Quick&Dirty way of not having to replace all occurances of renderer in the engine
 	static std::unique_ptr<Platform> platform;
 	static std::map<size_t, uint8_t> mapKeys;
 	//-------------------------------------------------------------------------

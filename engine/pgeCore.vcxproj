@@ -144,7 +144,7 @@
     <ClInclude Include="olcPixelGameEngine.h" />
     <ClInclude Include="pgeDecal.h" />
     <ClInclude Include="pgeDefs.h" />
-    <ClInclude Include="pgeInternals.h" />
+    <ClInclude Include="pgeCore.h" />
     <ClInclude Include="pgeSprite.h" />
     <ClInclude Include="pgeTypes.h" />
   </ItemGroup>
