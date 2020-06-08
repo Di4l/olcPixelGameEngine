@@ -16,9 +16,10 @@ namespace olc
 		virtual ~Sprite() {}
 
 	public:
-		olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr);
-		olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr);
-		olc::rcode SaveToPGESprFile(const std::string& sImageFile);
+		olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override;
+		olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override;
+		olc::rcode SaveToFile(const std::string& sImageFile) override { return olc::FAIL; }
+		olc::rcode SaveToPGESprFile(const std::string& sImageFile) override;
 
 	public:
 	};

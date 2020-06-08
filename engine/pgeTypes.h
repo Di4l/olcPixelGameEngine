@@ -211,6 +211,7 @@ namespace olc
 
 		virtual olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) = 0;
 		virtual olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) = 0;
+		virtual olc::rcode SaveToFile(const std::string& sImageFile) = 0;
 		virtual olc::rcode SaveToPGESprFile(const std::string& sImageFile) = 0;
 
 		void   SetSampleMode(ISprite::Mode mode = ISprite::Mode::NORMAL);

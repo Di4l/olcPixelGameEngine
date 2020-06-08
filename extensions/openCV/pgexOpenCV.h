@@ -15,10 +15,16 @@ namespace olc
 		cv::Mat m_image;
 
 		void updateSprite();
+		cv::Mat cvToOlc(const cv::Mat& img);
+#define olcToCv		cvToOlc
+
+		bool isCvImage() { return (m_image.rows > 0 || m_image.cols > 0); }
+
+		olc::rcode loadFromStream(std::istream& is);
 
 	protected:
-		bool loadImage(const std::string& sImageFile);
-		void scaleImage(float scale);
+		olc::rcode loadImage(const std::string& sImageFile);
+		void       scaleImage(float scale);
 
 	public:
 		CVSprite() : ISprite(), m_image() {}
@@ -31,10 +37,10 @@ namespace olc
 
 		void resize(int32_t w, int32_t h);
 
-		virtual olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override { return olc::OK; }
-		virtual olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override { return olc::OK; }
-		virtual olc::rcode SaveToPGESprFile(const std::string& sImageFile) override { return olc::OK; }
-
+		olc::rcode LoadFromFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override;
+		olc::rcode LoadFromPGESprFile(const std::string& sImageFile, olc::ResourcePack* pack = nullptr) override;
+		olc::rcode SaveToFile(const std::string& sImageFile) override;
+		olc::rcode SaveToPGESprFile(const std::string& sImageFile) override;
 	};
 	//-------------------------------------------------------------------------
 }
