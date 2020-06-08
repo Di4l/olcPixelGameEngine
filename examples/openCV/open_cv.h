@@ -12,7 +12,12 @@ public:
 	olcOpenCv();
 	virtual ~olcOpenCv();
 
+	olc::Decal*    dclLogo;
+	olc::CVSprite  olcLogo;
 	olc::CVSprite* cvSprite = nullptr;
+
+	uint8_t fadeIn(float dt, float time = 0.0);
+	uint8_t fadeOut(float dt, float time = 0.0);
 
 public:
 	bool OnUserCreate() override;

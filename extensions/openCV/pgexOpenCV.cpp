@@ -9,16 +9,7 @@ using namespace olc;
 
 CVSprite::CVSprite(const std::string& sImageFile, olc::ResourcePack* pack)
 {
-    //-- Do not support resource packages yet
-    if (pack)
-    {
-        LoadFromFile(sImageFile, pack);
-    }
-    else
-    {
-        loadImage(sImageFile);
-        updateSprite();
-    }
+    LoadFromFile(sImageFile, pack);
 }
 //-----------------------------------------------------------------------------
 

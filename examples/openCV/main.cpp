@@ -19,12 +19,12 @@ int main(int argc, char** argv)
     olcOpenCv demo;
     if (demo.Construct(960, 540, 1, 1))
     {
-        //demo.cvSprite = new olc::CVSprite(argv[1], demo.ScreenWidth(), demo.ScreenHeight());
+        demo.cvSprite = new olc::CVSprite(argv[1], demo.ScreenWidth(), demo.ScreenHeight());
         //demo.cvSprite->SaveToPGESprFile("file.pgr");
         //demo.cvSprite->SaveToFile("file.png");
-        demo.cvSprite = new olc::CVSprite();
+        //demo.cvSprite = new olc::CVSprite();
         //demo.cvSprite->LoadFromPGESprFile("file.pgr");
-        demo.cvSprite->LoadFromFile("file.png");
+        //demo.cvSprite->LoadFromFile("file.png");
 
         demo.Start();
     }
