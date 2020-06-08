@@ -29,7 +29,7 @@ typedef X11::GLXContext glDeviceContext_t;
 typedef X11::GLXContext glRenderContext_t;
 #endif
 //-----------------------------------------------------------------------------
-#include "../pgeInternals.h"
+#include "../pgeCore.h"
 //-----------------------------------------------------------------------------
 
 namespace olc

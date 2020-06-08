@@ -187,7 +187,7 @@ int main()
 
 #pragma once
 
-#include "pgeInternals.h"
+#include "pgeCore.h"
 
 // O------------------------------------------------------------------------------O
 // | olcPixelGameEngine INTERFACE DECLARATION                                     |

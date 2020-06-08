@@ -61,7 +61,6 @@ namespace _gfs = std::filesystem;
 
 #define UNUSED(x) (void)(x)
 
-
 #if !defined(OLC_GFX_OPENGL33) && !defined(OLC_GFX_DIRECTX10)
 #define OLC_GFX_OPENGL10
 #endif
